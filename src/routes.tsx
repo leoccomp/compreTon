@@ -17,7 +17,7 @@ function Routes() {
       <Drawer.Screen 
         name="Cart"
         component={Cart}
-        options={{ title: 'Carinho' }}
+        options={{ title: 'Carrinho' }}
       />
     </Drawer.Navigator>
   )

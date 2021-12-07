@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Image, SafeAreaView, FlatList } from "react-native";
+import { Text, View, StyleSheet, Image, SafeAreaView, FlatList, TouchableOpacity } from "react-native";
 import {
   Card,
   Button
 } from "react-native-elements";
+import { useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 
 import api from '../../services/api'
@@ -11,6 +12,7 @@ import api from '../../services/api'
 export default function Home() {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)
+  const navigation = useNavigation();
   
   useEffect(() => {
     (async () => {
@@ -55,11 +57,13 @@ export default function Home() {
         <View>
           <Text style={styles.welcomeText}>Olá, bem vindo!</Text>
         </View>
-        <Feather 
-          name="shopping-cart"
-          size={23}
-          color="#fff"
-        />
+        <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
+          <Feather 
+            name="shopping-cart"
+            size={23}
+            color="#fff"
+          />
+        </TouchableOpacity>
       </View>
       <FlatList
         data={products}
